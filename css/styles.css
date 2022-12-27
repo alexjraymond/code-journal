@@ -1,0 +1,84 @@
+header {
+  background-color: #404652;
+}
+
+.header {
+  width: 100%;
+  font-size: 24px;
+  height: 50px;
+  display: flex;
+  color: white;
+}
+
+.header-words {
+  align-self: center;
+  margin-left: 10px;
+  font-weight: 100;
+}
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: #edebed;
+}
+
+.picture-frame {
+  width: 100%;
+  max-height: 400px;
+}
+
+.wrap {
+  flex: wrap;
+}
+
+form {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-color: #d5d4d5;
+  border-width: 1px;
+}
+
+input {
+  height: 35px;
+}
+
+textarea {
+  height: 150px;
+}
+
+label {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.button-style {
+  margin-top: 15px;
+  background-color: #404652;
+  color: white;
+  border-style: hidden;
+  border-radius: 3px;
+  padding: 8px;
+}
+
+.neg-point75-rem h1 {
+  font-weight: 200px;
+}
+
+.text-align-right {
+  text-align: right;
+}
