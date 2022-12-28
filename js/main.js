@@ -25,3 +25,13 @@ $form.addEventListener('submit', function (event) {
   $form.reset();
 }
 );
+
+function renderEntry(entry) {
+  var $selectEntries = document.querySelector('.entries');
+
+  // console.log($selectEntries);
+  return $selectEntries;
+}
+
+document.addEventListener('DOMContentLoaded', renderEntry)
+;
