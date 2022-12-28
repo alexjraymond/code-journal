@@ -14,10 +14,10 @@ var $form = document.querySelector('#form');
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
   var notes = {
-    EntryId: data.nextEntryId,
-    Note: $form.elements.notes.value,
-    Link: $form.elements.photourl.value,
-    Title: $form.elements.title.value
+    entryId: data.nextEntryId,
+    note: $form.elements.notes.value,
+    link: $form.elements.photourl.value,
+    title: $form.elements.title.value
   };
   data.nextEntryId++;
   data.entries.unshift(notes);
