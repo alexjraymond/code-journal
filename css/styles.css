@@ -58,14 +58,6 @@ label {
   display: inline-block;
 }
 
-.width-100 {
-  width: 100%;
-}
-
-.display-flex {
-  display: flex;
-}
-
 .button-style {
   margin-top: 15px;
   background-color: #404652;
@@ -75,10 +67,13 @@ label {
   padding: 8px;
 }
 
-.neg-point75-rem h1 {
-  font-weight: 200px;
-}
-
 .text-align-right {
   text-align: right;
+}
+
+input:focus,
+textarea:focus {
+  outline-style: inset;
+  outline-color: #404652;
+  box-shadow: 0 0 10px #404652;
 }

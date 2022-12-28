@@ -16,5 +16,6 @@ function onBeforeUnload(event) {
 window.addEventListener('beforeunload', onBeforeUnload);
 
 if (localStorage.getItem('data-model') !== null) {
-  data = JSON.parse('data-model');
+  var jsonObj = localStorage.getItem('data-model');
+  data = JSON.parse(jsonObj);
 }

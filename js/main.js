@@ -1,22 +1,15 @@
 
 var $pictureFrame = document.querySelector('.picture-frame');
+var $picInput = document.querySelector('#picinput');
 
 function changePic(event) {
   var $photoUrl = document.querySelector('.pic-input').value;
-  var $newPic = $photoUrl;
-  $pictureFrame.src = $newPic;
-
+  $pictureFrame.src = $photoUrl;
 }
 
-document.addEventListener('input', changePic);
+$picInput.addEventListener('input', changePic);
 
 var $form = document.querySelector('#form');
-
-// function submitForm(event) {
-//   event.preventDefault();
-//   var notes = {};
-
-// }
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -28,7 +21,7 @@ $form.addEventListener('submit', function (event) {
   };
   data.nextEntryId++;
   data.entries.unshift(notes);
-  $form.elements.photourl = 'images/placeholder-image-square.jpg';
+  document.querySelector('img').src = 'images/placeholder-image-square.jpg';
   $form.reset();
 }
 );
