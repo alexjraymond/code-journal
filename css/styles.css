@@ -30,7 +30,8 @@ body {
   flex: wrap;
 }
 
-form {
+form,
+.entries {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
 }
 
@@ -76,4 +77,25 @@ textarea:focus {
   outline-style: inset;
   outline-color: #404652;
   box-shadow: 0 0 10px #404652;
+}
+
+ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+li {
+  margin-bottom: 30px;
+}
+
+.note {
+  line-height: 1.7rem;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.margin-bot-30 {
+  margin-bottom: 15px;
 }
