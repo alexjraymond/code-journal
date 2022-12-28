@@ -9,3 +9,24 @@ function changePic(event) {
 }
 
 document.addEventListener('input', changePic);
+
+var $form = document.querySelector('#form');
+
+// function submitForm(event) {
+//   event.preventDefault();
+//   var notes = {};
+
+// }
+
+$form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var notes = {
+    EntryId: data.nextEntryId,
+    Note: $form.elements.notes.value,
+    Link: $form.elements.photourl.value,
+    Title: $form.elements.title.value
+  };
+  data.nextEntryId++;
+  data.entries.unshift(notes);
+}
+);
