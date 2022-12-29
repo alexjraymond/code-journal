@@ -82,9 +82,15 @@ function toggleNoEntries() {
   }
 }
 
+var $h1 = document.querySelector('h1');
+var $newButton = document.querySelector('#new');
+
 function viewSwap(entry) {
   entry = 'entry-form';
   data.view = entry;
+  $form.classList.add('hidden');
+  $h1.classList.add('hidden');
+  $newButton.classList.remove('hidden');
 }
 
 var $header = document.querySelector('a');
