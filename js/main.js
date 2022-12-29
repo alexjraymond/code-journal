@@ -24,16 +24,10 @@ $form.addEventListener('submit', function (event) {
   document.querySelector('img').src = 'images/placeholder-image-square.jpg';
   $form.reset();
   toggleNoEntries();
+  viewSwap('entries');
+  renderEntry(notes);
 }
 );
-
-// li
-//  div row
-//    div col half
-//      img
-//  div col half
-//      h2
-//      p
 
 function renderEntry(entry) {
   var $eventUnorderList = document.querySelector('ul');
@@ -69,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function (entry) {
     var $entireEntry = renderEntry(data.entries[i]);
     $entryList.appendChild($entireEntry);
   }
+  viewSwap(data.view);
+  toggleNoEntries();
 });
 
 function toggleNoEntries() {
@@ -84,17 +80,34 @@ function toggleNoEntries() {
 }
 
 var $h1 = document.querySelector('h1');
-var $newButton = document.querySelector('#new');
+// change to entriesView
+var $entriesView = document.querySelector('.entries');
 
-function viewSwap(entry) {
-  entry = 'entry-form';
-  data.view = entry;
-  $form.classList.add('hidden');
-  $h1.classList.add('hidden');
-  $newButton.classList.remove('hidden');
+function viewSwap(view) {
+
+  data.view = view;
+  if (view === 'entries') {
+    $form.classList.add('hidden');
+    $h1.classList.add('hidden');
+    $entriesView.classList.remove('hidden');
+
+  } else if (view === 'entry-form') {
+    $form.classList.remove('hidden');
+    $h1.classList.remove('hidden');
+    $entriesView.classList.add('hidden');
+
+  }
 }
 
-var $header = document.querySelector('a');
-$header.addEventListener('click', viewSwap);
+var $header = document.querySelector('#entries-header');
+$header.addEventListener('click', function (event) {
 
-toggleNoEntries();
+  viewSwap('entries');
+});
+
+var $newButton = document.querySelector('#new-button');
+
+$newButton.addEventListener('click', function (event) {
+
+  viewSwap('entry-form');
+});
