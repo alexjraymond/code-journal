@@ -23,6 +23,7 @@ $form.addEventListener('submit', function (event) {
   data.entries.unshift(notes);
   document.querySelector('img').src = 'images/placeholder-image-square.jpg';
   $form.reset();
+  toggleNoEntries();
 }
 );
 
@@ -69,3 +70,30 @@ document.addEventListener('DOMContentLoaded', function (entry) {
     $entryList.appendChild($entireEntry);
   }
 });
+
+function toggleNoEntries() {
+  var $noEntries = document.querySelector('#no-entries');
+
+  if (data.entries.length === 0) {
+    $noEntries.classList('visible');
+  } else {
+    $noEntries.classList.remove('visible');
+    $noEntries.classList.add('hidden');
+  }
+}
+
+function viewSwap(entry) {
+  entry = 'entry-form';
+  data.view = entry;
+}
+
+var $header = document.querySelector('a');
+$header.addEventListener('click', viewSwap);
+
+// for (var i = 0; i < $header.length; i++) {
+
+//   if ($header[i] === 0) {
+//     console.log('code journal');
+//   } else { console.log('entries'); }
+//   $header[i].addEventListener('click', viewSwap);
+// }
