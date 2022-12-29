@@ -47,16 +47,24 @@ function renderEntry(entry) {
   var $entryColHalfTextDiv = document.createElement('div');
   $entryColHalfTextDiv.setAttribute('class', 'column-half');
   $entryRowDiv.appendChild($entryColHalfTextDiv);
+  var $titlePencilRow = document.createElement('div');
+  $titlePencilRow.setAttribute('class', 'row');
+  $entryColHalfTextDiv.appendChild($titlePencilRow);
   var $entryH2Title = document.createElement('h2');
+  $entryH2Title.setAttribute('class', 'col-half-always');
   var $getTitle = document.createTextNode(entry.title);
   $entryH2Title.appendChild($getTitle);
-  $entryColHalfTextDiv.appendChild($entryH2Title);
+  $titlePencilRow.appendChild($entryH2Title);
+  var $pencilIcon = document.createElement('span');
+  $pencilIcon.setAttribute('class', 'pencil-style fa-solid fa-pencil col-half-always');
+  $titlePencilRow.appendChild($pencilIcon);
   var $entryNoteP = document.createElement('p');
   var $getNote = document.createTextNode(entry.note);
   $entryNoteP.appendChild($getNote);
   $entryColHalfTextDiv.appendChild($entryNoteP);
   // $eventUnorderList.appendChild($entryLi);
   return $entryLi;
+
 }
 
 document.addEventListener('DOMContentLoaded', function (entry) {
