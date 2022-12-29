@@ -73,12 +73,13 @@ document.addEventListener('DOMContentLoaded', function (entry) {
 
 function toggleNoEntries() {
   var $noEntries = document.querySelector('#no-entries');
-
+  var $entriesH1 = document.querySelector('#entries-h1');
   if (data.entries.length === 0) {
-    $noEntries.classList('visible');
+    $noEntries.classList.add('visible');
   } else {
     $noEntries.classList.remove('visible');
     $noEntries.classList.add('hidden');
+    $entriesH1.classList.remove('hidden');
   }
 }
 
@@ -96,10 +97,4 @@ function viewSwap(entry) {
 var $header = document.querySelector('a');
 $header.addEventListener('click', viewSwap);
 
-// for (var i = 0; i < $header.length; i++) {
-
-//   if ($header[i] === 0) {
-//     console.log('code journal');
-//   } else { console.log('entries'); }
-//   $header[i].addEventListener('click', viewSwap);
-// }
+toggleNoEntries();
