@@ -21,7 +21,7 @@ $form.addEventListener('submit', function (event) {
   };
   data.nextEntryId++;
   data.entries.unshift(notes);
-  document.querySelector('img').src = 'images/placeholder-image-square.jpg';
+  document.querySelector('#default-pic').src = 'images/placeholder-image-square.jpg';
   $form.reset();
   toggleNoEntries();
   viewSwap('entries');
