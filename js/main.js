@@ -32,6 +32,7 @@ $form.addEventListener('submit', function (event) {
     data.nextEntryId++;
   } else {
     var editingIndex = data.entries.entryId;
+    // eslint-disable-next-line no-unused-vars
     var editedEntry = {
       entryId: editingIndex,
       note: $form.elements.notes.value,
@@ -39,12 +40,17 @@ $form.addEventListener('submit', function (event) {
       title: $form.elements.title.value
     };
 
-    data.entries.splice(editingIndex);
-    data.entries.unshift(editedEntry);
+    // data.entries.splice(editingIndex);
+    // data.entries.unshift(editedEntry);
+    // var $editedEntryDOM = renderEntry(editedEntry);
+    // replacechild;
+    // console.log($entryToReplace);
+    // console.log($editedEntryDOM);
+    // $entryToReplace.replaceWith($editedEntryDOM);
     toggleNoEntries();
     viewSwap('entries');
-    var editedLiReturn = renderEntry(editedEntry);
-    $entryList.appendChild(editedLiReturn);
+    // var editedLiReturn = renderEntry(editedEntry);
+    // $entryList.appendChild(editedLiReturn);
     data.editing = null;
   }
 }
