@@ -31,9 +31,9 @@ $form.addEventListener('submit', function (event) {
     $entryList.appendChild(newLiReturn);
     data.nextEntryId++;
   } else {
-    var editingIndex = data.entries.entryId;
+
     var editedEntry = {
-      entryId: editingIndex,
+      entryId: data.editing.entryId,
       note: $form.elements.notes.value,
       link: $form.elements.photourl.value,
       title: $form.elements.title.value
@@ -44,11 +44,14 @@ $form.addEventListener('submit', function (event) {
       var individualLi = Number($allTheLi[i].getAttribute('data-entry-id'));
       if (data.editing.entryId === individualLi) {
         $allTheLi[i].replaceWith(renderEntry(editedEntry));
+
+        data.entries[i] = editedEntry;
       }
     }
     toggleNoEntries();
     viewSwap('entries');
     data.editing = null;
+    // console.log(data.entries);
   }
 }
 );
