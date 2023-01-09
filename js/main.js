@@ -28,7 +28,7 @@ $form.addEventListener('submit', function (event) {
     toggleNoEntries();
     viewSwap('entries');
     var newLiReturn = renderEntry(newEntry);
-    $entryList.appendChild(newLiReturn);
+    $entryList.prepend(newLiReturn);
     data.nextEntryId++;
   } else {
 
@@ -50,16 +50,15 @@ $form.addEventListener('submit', function (event) {
     }
     toggleNoEntries();
     viewSwap('entries');
-    data.editing = null;
-    // console.log(data.entries);
   }
+  data.editing = null;
 }
 );
 
 function renderEntry(entry) {
 
   var $entryLi = document.createElement('li');
-  $entryLi.setAttribute('data-entry-id', data.nextEntryId);
+  $entryLi.setAttribute('data-entry-id', entry.entryId);
   var $entryRowDiv = document.createElement('div');
   $entryRowDiv.setAttribute('class', 'row');
   $entryLi.appendChild($entryRowDiv);
@@ -148,14 +147,14 @@ $newButton.addEventListener('click', function (event) {
 var $pencilButton = document.querySelector('ul');
 $pencilButton.addEventListener('click', function (event) {
   if (event.target.tagName === 'I') {
-    var intendedLi = event.target.parentElement.parentElement.parentElement.parentElement;
+    var intendedLi = event.target.closest('li');
     var clickedPencil = Number(intendedLi.getAttribute('data-entry-id'));
     for (var i = 0; i < data.entries.length; i++) {
       if (clickedPencil === data.entries[i].entryId) {
         data.editing = data.entries[i];
-        document.theForm.title.value = data.entries[i].title;
-        document.theForm.photourl.value = data.entries[i].link;
-        document.theForm.notes.value = data.entries[i].note;
+        $form.elements.title.value = data.entries[i].title;
+        $form.elements.photourl.value = data.entries[i].link;
+        $form.elements.notes.value = data.entries[i].note;
         changePic(data.entries[i].link);
       }
     }
