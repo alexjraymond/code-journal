@@ -125,7 +125,7 @@ h2 {
   font-size: 20px;
 }
 
-.col-half-entries-top {
+.col-half-always {
   width: 50%;
 }
 
@@ -135,4 +135,10 @@ h2 {
 
 .margin-bot-10 {
   margin-bottom: 10px;
+}
+
+.pencil-style {
+  text-align: right;
+  font-size: 25px;
+  color: #404652;
 }
