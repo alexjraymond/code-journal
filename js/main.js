@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', function (entry) {
 });
 
 function toggleNoEntries() {
+
   var $noEntries = document.querySelector('#no-entries');
   var $entriesH1 = document.querySelector('#entries-h1');
   if (data.entries.length === 0) {
-    $noEntries.classList.add('visible');
+    $noEntries.classList.remove('hidden');
   } else {
-    $noEntries.classList.remove('visible');
     $noEntries.classList.add('hidden');
     $entriesH1.classList.remove('hidden');
   }
@@ -137,18 +137,21 @@ $header.addEventListener('click', function (event) {
 });
 
 var $newButton = document.querySelector('#new-button');
+var $deleteButton = document.querySelector('#delete');
 
 $newButton.addEventListener('click', function (event) {
   $form.reset();
   $newEntryTitle.textContent = 'New Entry';
+  $deleteButton.classList.add('hidden');
   viewSwap('entry-form');
 });
 
-var $pencilButton = document.querySelector('ul');
-$pencilButton.addEventListener('click', function (event) {
+var $ul = document.querySelector('ul');
+$ul.addEventListener('click', function (event) {
   if (event.target.tagName === 'I') {
     var intendedLi = event.target.closest('li');
     var clickedPencil = Number(intendedLi.getAttribute('data-entry-id'));
+    $deleteButton.classList.remove('hidden');
     for (var i = 0; i < data.entries.length; i++) {
       if (clickedPencil === data.entries[i].entryId) {
         data.editing = data.entries[i];
@@ -157,9 +160,48 @@ $pencilButton.addEventListener('click', function (event) {
         $form.elements.notes.value = data.entries[i].note;
         changePic(data.entries[i].link);
       }
+
     }
+    viewSwap('entry-form');
+    $newEntryTitle.textContent = 'Edit Entry';
   }
-  viewSwap('entry-form');
-  $newEntryTitle.textContent = 'Edit Entry';
 
 });
+
+var $modal = document.querySelector('.popup');
+var $confirmModal = document.querySelector('#confirm');
+var $cancelModal = document.querySelector('#cancel');
+var $overlayModal = document.querySelector('.overlay');
+
+$deleteButton.addEventListener('click', function () {
+  $modal.classList.remove('hidden');
+  $overlayModal.classList.remove('hidden');
+})
+;
+
+$cancelModal.addEventListener('click', function () {
+  $modal.classList.add('hidden');
+  $overlayModal.classList.add('hidden');
+});
+
+$confirmModal.addEventListener('click', function () {
+  var id = data.editing.entryId;
+
+  var $allTheLi = document.querySelectorAll('li');
+  for (var i = 0; i < $allTheLi.length; i++) {
+    var individualLi = Number($allTheLi[i].getAttribute('data-entry-id'));
+    if (id === individualLi) {
+      $allTheLi[i].remove(individualLi);
+      data.entries.splice(i, 1);
+
+    }
+
+  }
+  $modal.classList.add('hidden');
+  $overlayModal.classList.add('hidden');
+  toggleNoEntries();
+  viewSwap('entries');
+  data.editing = null;
+
+}
+);
